@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "862224930038",
+    "project_id": "tibia-tracker-cab5a",
+    "storage_bucket": "tibia-tracker-cab5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862224930038:android:9420971f86e75a5a74c8d7",
+        "android_client_info": {
+          "package_name": "com.example.tibiatracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862224930038-hpo09ko76f1ukf87uqi4ugfrc3jqtvfq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tibiatracker",
+            "certificate_hash": "bdd45c2bbc3dcd707c6ba7973160b69043505ea2"
+          }
+        },
+        {
+          "client_id": "862224930038-rlaplui62e9kpifg7ttp6dt8lk5nqi03.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDA7sNQjYCfqxbzucdCs6ArRGmx5zSOSmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862224930038-rlaplui62e9kpifg7ttp6dt8lk5nqi03.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
