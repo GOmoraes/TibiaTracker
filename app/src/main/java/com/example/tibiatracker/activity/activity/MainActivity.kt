@@ -10,6 +10,7 @@ import com.example.tibiatracker.R
 import com.example.tibiatracker.activity.repository.MainRepositoryImpl
 import com.example.tibiatracker.activity.service.ApiClient
 import com.example.tibiatracker.activity.view_model.MainViewModel
+import com.google.firebase.auth.FirebaseAuth
 import org.w3c.dom.Text
 
 class MainActivity : ComponentActivity() {
@@ -17,9 +18,12 @@ class MainActivity : ComponentActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var tvTitulo: TextView
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         setViewModel()
         setObserver()

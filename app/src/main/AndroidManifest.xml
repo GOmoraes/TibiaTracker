@@ -17,11 +17,25 @@
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.TibiaTracker">
+        </activity>
+
+        <activity
+            android:name=".activity.login.LoginActivity"
+            android:exported="true"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.TibiaTracker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.login.RegisterActivity"
+            android:exported="true"
+            android:label="@string/title_activity_register"
+            android:theme="@style/Theme.TibiaTracker">
         </activity>
     </application>
 
