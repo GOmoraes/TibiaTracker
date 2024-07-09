@@ -28,6 +28,8 @@ class MainViewModel(
                 AccountResponse.postValue((request.body()!!))
             }else{
                 //tratar falha
+                Log.e(TAG, "getAccount: "+request.body(), )
+                actionError.postValue(("Conta não encontrada"))
             }
         }
     }
