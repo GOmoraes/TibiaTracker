@@ -38,6 +38,19 @@ object ApiClient {
         }
         return mainService
     }
+    fun tibiaTracker(context: Context): MainService {
+        if(!ApiClient::mainService.isInitialized) {
+            val gsonBuilder = GsonBuilder()
+            gsonBuilder.registerTypeAdapter(Date::class.java, DateDeserializer())
+            val retrofit = Retrofit.Builder()
+                .baseUrl(UrlApi.BASE_URL)
+                .client(okhttpClient(context))
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            mainService = retrofit.create(MainService::class.java)
+        }
+        return mainService
+    }
 
 }
 

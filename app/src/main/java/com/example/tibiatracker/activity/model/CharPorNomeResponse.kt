@@ -19,6 +19,8 @@ data class Character2(
     val level: Int?,
     val name: String?,
     val world: String?,
-    val last_login: String?
+    val last_login: String?,
+    val traded: Boolean?,
+    val vocation: String?
 
     ) : Serializable
