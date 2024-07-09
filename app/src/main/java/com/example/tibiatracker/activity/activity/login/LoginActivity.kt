@@ -50,8 +50,8 @@ class LoginActivity : ComponentActivity() {
             }
 
         }catch (e:Exception){
-            Toast.makeText(this, e.localizedMessage, Toast.LENGTH_LONG).show()
-            Log.e(TAG, "LoginActivity: "+ e.localizedMessage, )
+            //Toast.makeText(this, e.localizedMessage, Toast.LENGTH_LONG).show()
+            //Log.e(TAG, "LoginActivity: "+ e.localizedMessage, )
         }
         setViews()
     }
@@ -74,7 +74,11 @@ class LoginActivity : ComponentActivity() {
             if (!email.text.toString().isNullOrEmpty() && !senha.text.toString().isNullOrEmpty()){
                 auth.signInWithEmailAndPassword(email.text.toString(),senha.text.toString()).addOnCompleteListener{
                     if (it.isSuccessful){
-                        startActivity(Intent(this, MainActivity::class.java))
+                        val bundle = Bundle()
+                        bundle.putString(Serial.account, "não")
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.putExtras(bundle)
+                        startActivity(intent)
                         finish()
                     }
                 }.addOnFailureListener{

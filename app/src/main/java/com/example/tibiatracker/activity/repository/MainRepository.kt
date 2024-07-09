@@ -5,6 +5,8 @@ import retrofit2.Response
 
 interface MainRepository {
     suspend fun getAccount(id: String): Response<AccountResponse>
+
+    suspend fun getAccountByEmail(id: String): Response<AccountResponse>
 //
     suspend fun postAccount(request: AccountResponse): Response<AccountResponse>
 //

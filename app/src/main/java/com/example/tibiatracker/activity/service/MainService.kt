@@ -13,6 +13,9 @@ interface MainService {
     @GET(UrlApi.ACCOUNT_BY_ID)
     suspend fun getAccount(@Path("id") id: String): Response<AccountResponse>
 
+    @GET(UrlApi.ACCOUNT_BY_EMAIL)
+    suspend fun getAccountByEmail(@Path("emailReq") emailReq: String): Response<AccountResponse>
+
 //
     @POST(UrlApi.ADD_ACCOUNT)
     suspend fun postAccount(@Body request: AccountResponse): Response<AccountResponse>

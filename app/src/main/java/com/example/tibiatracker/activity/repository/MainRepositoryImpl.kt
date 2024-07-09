@@ -8,6 +8,8 @@ class MainRepositoryImpl(
 ): MainRepository {
 
     override suspend fun getAccount(id: String): Response<AccountResponse> = mainService.getAccount(id)
+
+    override suspend fun getAccountByEmail(email: String): Response<AccountResponse> = mainService.getAccountByEmail(email)
 //
     override suspend fun postAccount(request: AccountResponse): Response<AccountResponse> = mainService.postAccount(request)
 //    override suspend fun getRequalificacaoNome(request: RequalificacaoNomeRequest): Response<RequalificacaoNomeResponse> = requalificacaoService.getRequalificacaoNome(request)

@@ -9,7 +9,8 @@ data class AccountResponse(
     val contaID: Int?,
     val contaEmail: String?,
     val contaNome: String?,
-    val contaChar: String?,
+    val contaChar: List<String>?,
+    val contaDescricao: String?,
     val __v: Int?
 ) : Serializable
 

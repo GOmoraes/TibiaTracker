@@ -27,7 +27,18 @@ class MainViewModel(
                 Log.e(TAG, "getAccount: "+request.body().toString())
                 AccountResponse.postValue((request.body()!!))
             }else{
-                //tratar falha
+                Log.e(TAG, "getAccount: "+request.body(), )
+                actionError.postValue(("Conta não encontrada"))
+            }
+        }
+    }
+    fun getAccountByEmail(id: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val request = mainRepository.getAccountByEmail(id)
+            if (request.isSuccessful) {
+                Log.e(TAG, "getAccount: "+request.body().toString())
+                AccountResponse.postValue((request.body()!!))
+            }else{
                 Log.e(TAG, "getAccount: "+request.body(), )
                 actionError.postValue(("Conta não encontrada"))
             }
@@ -40,7 +51,8 @@ class MainViewModel(
                 Log.e(TAG, "postAccount: "+request.body().toString())
                 AccountResponse.postValue((request.body()!!))
             }else{
-                //tratar falha
+                Log.e(TAG, "postAccount: "+request.body(), )
+                actionError.postValue(("Conta não criada"))
             }
         }
     }

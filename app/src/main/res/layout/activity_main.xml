@@ -16,5 +16,54 @@
         android:textColor="@color/black"
         android:textSize="32sp"/>
 
+    <RelativeLayout
+        android:id="@+id/rl_register_nome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bordas_arredondadas_fundo_cinza">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome de Usuário*"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                android:textColor="@color/black"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_usuario_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="LucasTijolinho"
+                android:textColor="@color/black"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <Button
+                android:id="@+id/bt_criar_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:text="Criar"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
