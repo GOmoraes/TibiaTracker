@@ -2,21 +2,13 @@ package com.example.tibiatracker.activity.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.tibiatracker.R
 import com.example.tibiatracker.activity.activity.MainActivity
-import com.example.tibiatracker.activity.repository.MainRepositoryImpl
-import com.example.tibiatracker.activity.service.ApiClient
-import com.example.tibiatracker.activity.view_model.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
-import org.w3c.dom.Text
 
 class LoginActivity : ComponentActivity() {
 
