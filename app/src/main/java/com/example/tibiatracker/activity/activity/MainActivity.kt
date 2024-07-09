@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tibiatracker.R
+import com.example.tibiatracker.activity.model.AccountResponse
 import com.example.tibiatracker.activity.repository.MainRepositoryImpl
 import com.example.tibiatracker.activity.repository.TibiaDataRepositoryImpl
 import com.example.tibiatracker.activity.service.ApiClient
@@ -66,6 +67,18 @@ class MainActivity : ComponentActivity() {
         tvTitulo = findViewById(R.id.tv_titulo)
 
         tibiaDataViewModel.getCharPorNome("Trollefar")
-        mainViewModel.getAccount(10)
+        //mainViewModel.getAccount("668d8dd4bf4293c1fe1d124c")
+        var conta : AccountResponse = AccountResponse(
+            contaID = 100,
+            contaChar = "Royal Pojap",
+            contaNome = "Guolmoraes",
+            contaEmail = "guolmoraes@hotmail.com",
+            __v = null,
+            _id = null
+
+        )
+        mainViewModel.postAccount(conta)
+
+
     }
 }

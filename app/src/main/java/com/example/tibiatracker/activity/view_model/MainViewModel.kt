@@ -7,9 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.tibiatracker.activity.model.AccountResponse
-import com.example.tibiatracker.activity.model.CharPorNomeResponse
 import com.example.tibiatracker.activity.repository.MainRepository
-import com.example.tibiatracker.activity.repository.TibiaDataRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -22,11 +20,22 @@ class MainViewModel(
     val AccountResponse = MutableLiveData<AccountResponse>()
 
 
-    fun getAccount(id: Int) {
+    fun getAccount(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val request = mainRepository.getAccount(id)
             if (request.isSuccessful) {
                 Log.e(TAG, "getAccount: "+request.body().toString())
+                AccountResponse.postValue((request.body()!!))
+            }else{
+                //tratar falha
+            }
+        }
+    }
+    fun postAccount(conta: AccountResponse) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val request = mainRepository.postAccount(conta)
+            if (request.isSuccessful) {
+                Log.e(TAG, "postAccount: "+request.body().toString())
                 AccountResponse.postValue((request.body()!!))
             }else{
                 //tratar falha
