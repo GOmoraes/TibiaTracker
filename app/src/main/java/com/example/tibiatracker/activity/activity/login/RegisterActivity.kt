@@ -1,7 +1,9 @@
 package com.example.tibiatracker.activity.activity.login
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -37,11 +39,13 @@ class RegisterActivity : ComponentActivity() {
             if (!email.text.toString().isNullOrEmpty() && !senha.text.toString().isNullOrEmpty()){
                 LoginActivity.auth.createUserWithEmailAndPassword(email.text.toString(),senha.text.toString()).addOnCompleteListener{
                     if (it.isSuccessful){
+                        Toast.makeText(this, "Conta Criada com Sucesso !", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, LoginActivity::class.java))
                         finish()
                     }
                 }.addOnFailureListener{
-                    Toast.makeText(this, it.localizedMessage, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Falha ao registrar, tente novamente !", Toast.LENGTH_SHORT).show()
+                    Log.e(TAG, "registerResult: "+it.localizedMessage )
                 }
             }
         }
