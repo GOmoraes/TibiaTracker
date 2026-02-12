@@ -47,6 +47,7 @@ class MainActivity : ComponentActivity() {
 
         setViewModel()
         setObserver()
+        mainViewModel.getAccountByEmail(LoginActivity.auth.currentUser!!.email.toString())
         if (check == "não") {
             var email = LoginActivity.auth.currentUser!!.email.toString()
             mainViewModel.getAccountByEmail(email)
@@ -131,7 +132,7 @@ class MainActivity : ComponentActivity() {
                     contaID = (0..1000000000).random(),
                     contaChar = null,
                     contaNome = nome.text.toString(),
-                    contaEmail = LoginActivity.auth.currentUser!!.email.toString(),
+                    contaEmail = email,
                     __v = null,
                     contaDescricao = null,
                     _id = null
@@ -153,11 +154,11 @@ class MainActivity : ComponentActivity() {
     private fun setViews(){
         tvTitulo = findViewById(R.id.tv_titulo)
 
-        //tibiaDataViewModel.getCharPorNome("Royal Pojap")
+//        tibiaDataViewModel.getCharPorNome("Royal Pojap")
         //mainViewModel.getAccount(LoginActivity.auth.currentUser.toString())
         //mainViewModel.getAccount("668d97479cb94a0ad59d17b9")
 
-        //mainViewModel.postAccount(conta)
+//        mainViewModel.postAccount(conta)
 
 
     }
