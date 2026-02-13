@@ -1,4 +1,5 @@
 package com.example.tibiatracker.activity.repository
+import com.example.tibiatracker.activity.model.AccountCharOpdate
 import com.example.tibiatracker.activity.model.AccountResponse
 import com.example.tibiatracker.activity.service.MainService
 import retrofit2.Response
@@ -12,6 +13,11 @@ class MainRepositoryImpl(
     override suspend fun getAccountByEmail(email: String): Response<AccountResponse> = mainService.getAccountByEmail(email)
 //
     override suspend fun postAccount(request: AccountResponse): Response<AccountResponse> = mainService.postAccount(request)
+
+    override suspend fun putAddChar(request: AccountCharOpdate): Response<AccountResponse> = mainService.putAddChar(request)
+
+    override suspend fun putRemoveChar(request: AccountCharOpdate): Response<AccountResponse> = mainService.putRemoveChar(request)
+
 //    override suspend fun getRequalificacaoNome(request: RequalificacaoNomeRequest): Response<RequalificacaoNomeResponse> = requalificacaoService.getRequalificacaoNome(request)
 
 }

@@ -11,5 +11,9 @@ object UrlApi {
     const val ACCOUNT_BY_EMAIL = "/tibiatracker/acount/email/{emailReq}"
     const val ADD_ACCOUNT = "/tibiatracker/addacount"
 
+    const val ADD_CHAR = "/tibiatracker/acount/add-char"
+
+    const val REMOVE_CHAR = "/tibiatracker/acount/remove-char"
+
 
 }

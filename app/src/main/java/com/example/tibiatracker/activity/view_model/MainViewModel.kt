@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.tibiatracker.activity.model.AccountCharOpdate
 import com.example.tibiatracker.activity.model.AccountResponse
 import com.example.tibiatracker.activity.repository.MainRepository
 import kotlinx.coroutines.Dispatchers
@@ -53,6 +54,34 @@ class MainViewModel(
             }else{
                 Log.e(TAG, "postAccount: "+request.body(), )
                 actionError.postValue(("Conta não criada"))
+            }
+        }
+    }
+
+    fun putAddChar(email: String, char: String) {
+        var request = AccountCharOpdate(email,char)
+        viewModelScope.launch(Dispatchers.IO) {
+            val request = mainRepository.putAddChar(request)
+            if (request.isSuccessful) {
+                Log.e(TAG, "postAccount: "+request.body().toString())
+                AccountResponse.postValue((request.body()!!))
+            }else{
+                Log.e(TAG, "postAccount: "+request.body(), )
+                actionError.postValue(("Personagem não foi adicionado."))
+            }
+        }
+    }
+
+    fun putRemoveChar(email: String, char: String) {
+        var request = AccountCharOpdate(email,char)
+        viewModelScope.launch(Dispatchers.IO) {
+            val request = mainRepository.putRemoveChar(request)
+            if (request.isSuccessful) {
+                Log.e(TAG, "postAccount: "+request.body().toString())
+                AccountResponse.postValue((request.body()!!))
+            }else{
+                Log.e(TAG, "postAccount: "+request.body(), )
+                actionError.postValue(("Personagem não foi removido."))
             }
         }
     }

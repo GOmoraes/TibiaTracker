@@ -1,5 +1,6 @@
 package com.example.tibiatracker.activity.service
 
+import com.example.tibiatracker.activity.model.AccountCharOpdate
 import com.example.tibiatracker.activity.model.AccountResponse
 import com.example.tibiatracker.activity.model.CharPorNomeResponse
 import com.example.tibiatracker.activity.utils.UrlApi
@@ -7,6 +8,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface MainService {
@@ -19,6 +21,12 @@ interface MainService {
 //
     @POST(UrlApi.ADD_ACCOUNT)
     suspend fun postAccount(@Body request: AccountResponse): Response<AccountResponse>
+
+    @PUT(UrlApi.ADD_CHAR)
+    suspend fun putAddChar(@Body request: AccountCharOpdate): Response<AccountResponse>
+
+    @PUT(UrlApi.REMOVE_CHAR)
+    suspend fun putRemoveChar(@Body request: AccountCharOpdate): Response<AccountResponse>
 //
 //    @POST(UrlApi.REQUALIFICACAO_BUSCA_NOME)
 //    suspend fun getRequalificacaoNome(@Body request: RequalificacaoNomeRequest): Response<RequalificacaoNomeResponse>
