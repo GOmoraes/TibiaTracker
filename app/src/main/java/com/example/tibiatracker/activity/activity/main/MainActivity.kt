@@ -104,52 +104,26 @@ class MainActivity : ComponentActivity() {
             os.writeObject(account)
             os.close()
             fos.close()
-
-            var rlRegisterNomer = findViewById<RelativeLayout>(R.id.rl_register_nome)
-            rlRegisterNomer.visibility = View.GONE
         })
 
         mainViewModel.actionError.observe(this, Observer { resultado ->
-            if (resultado == "Conta não encontrada"){
-                Toast.makeText(this, resultado, Toast.LENGTH_SHORT).show()
-                registrarNome(LoginActivity.auth.currentUser!!.email.toString())
-                var rlRegisterNomer = findViewById<RelativeLayout>(R.id.rl_register_nome)
-                rlRegisterNomer.visibility = View.VISIBLE
-            }else if (resultado == "Conta não criada"){
-                Toast.makeText(this, resultado, Toast.LENGTH_LONG).show()
-            }
+            registrarConta(LoginActivity.auth.currentUser!!.email.toString())
         })
     }
 
-    private fun registrarNome(email : String){
-        var btRegistarNome = findViewById<Button>(R.id.bt_criar_nome)
-        var nome : EditText = findViewById(R.id.ti_usuario_nome)
-        
-        btRegistarNome.setOnClickListener{
-            if (!nome.text.toString().isNullOrEmpty()){
-            
-                var conta : AccountResponse = AccountResponse(
-                    contaID = (0..1000000000).random(),
-                    contaChar = null,
-                    contaNome = nome.text.toString(),
-                    contaEmail = email,
-                    __v = null,
-                    contaDescricao = null,
-                    _id = null
-    
-                )
+    private fun registrarConta(email : String){
+            var conta : AccountResponse = AccountResponse(
+                contaID = (0..1000000000).random(),
+                contaChar = null,
+                contaNome = null,
+                contaEmail = email,
+                __v = null,
+                contaDescricao = null,
+                _id = null
 
-                mainViewModel.postAccount(conta)
-            }else{
-                Toast.makeText(this, "É necessário preencher Nome de Usuário", Toast.LENGTH_SHORT).show()
-            }
+            )
+            mainViewModel.postAccount(conta)
         }
-        
-        
-        
-        
-
-    }
 
     private fun setViews(){
         tvTitulo = findViewById(R.id.tv_titulo)

@@ -4,8 +4,10 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.tibiatracker.R
@@ -61,6 +63,7 @@ class LoginActivity : ComponentActivity() {
     private fun setViews(){
         btRegistrar = findViewById(R.id.bt_registrar)
         btLogin = findViewById(R.id.bt_login)
+        var progressBar : ProgressBar = findViewById(R.id.pb_progress_bar)
 
 
         btRegistrar.setOnClickListener{
@@ -70,19 +73,24 @@ class LoginActivity : ComponentActivity() {
         btLogin.setOnClickListener{
             var email : EditText = findViewById(R.id.ti_email)
             var senha : EditText = findViewById(R.id.ti_senha)
+            progressBar.visibility = View.VISIBLE
 
             if (!email.text.toString().isNullOrEmpty() && !senha.text.toString().isNullOrEmpty()){
                 auth.signInWithEmailAndPassword(email.text.toString(),senha.text.toString()).addOnCompleteListener{
                     if (it.isSuccessful){
+                        progressBar.visibility = View.GONE
                         val bundle = Bundle()
                         bundle.putString(Serial.account, "não")
                         val intent = Intent(this, MainActivity::class.java)
                         intent.putExtras(bundle)
                         startActivity(intent)
                         finish()
+                    }else{
+                        progressBar.visibility = View.GONE
                     }
                 }.addOnFailureListener{
                     Toast.makeText(this, it.localizedMessage, Toast.LENGTH_SHORT).show()
+                    progressBar.visibility = View.GONE
                 }
             }
         }

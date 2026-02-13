@@ -60,6 +60,12 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"/>
 
+            <ProgressBar
+                android:id="@+id/pb_progress_bar"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:visibility="gone"/>
+
         </LinearLayout>
 
     </LinearLayout>
