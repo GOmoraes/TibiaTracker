@@ -87,4 +87,6 @@ dependencies {
 //    CrashLytics
     implementation("com.google.firebase:firebase-crashlytics")
     implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
+//  Giff
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.28")
 }
