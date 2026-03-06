@@ -27,7 +27,7 @@ class CharFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val ivTeste = view.findViewById<ImageView>(R.id.iv_teste)
+//        val ivTeste = view.findViewById<ImageView>(R.id.iv_teste)
 
     }
 
