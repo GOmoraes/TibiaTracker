@@ -5,12 +5,10 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tibiatracker.R
@@ -22,10 +20,11 @@ import com.example.tibiatracker.activity.service.ApiClient
 import com.example.tibiatracker.activity.utils.Serial
 import com.example.tibiatracker.activity.view_model.MainViewModel
 import com.example.tibiatracker.activity.view_model.TibiaDataViewModel
+import com.google.android.gms.dynamic.SupportFragmentWrapper
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var tibiaDataViewModel: TibiaDataViewModel
     private lateinit var mainViewModel: MainViewModel
@@ -55,6 +54,32 @@ class MainActivity : ComponentActivity() {
             getAccount()
         }
         setViews()
+        fragmentOpen()
+    }
+
+    private fun fragmentOpen(){
+        class HomeFragment : Fragment(R.layout.fragment_home)
+        class CharFragment : Fragment(R.layout.fragment_char)
+        class ProfileFragment : Fragment(R.layout.fragment_perfil)
+        openFragment(HomeFragment())
+
+        findViewById<View>(R.id.btn_home).setOnClickListener {
+            openFragment(HomeFragment())
+        }
+
+        findViewById<View>(R.id.btn_search).setOnClickListener {
+            openFragment(CharFragment())
+        }
+
+        findViewById<View>(R.id.btn_profile).setOnClickListener {
+            openFragment(ProfileFragment())
+        }
+    }
+    fun openFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
     }
     private fun getAccount(){
         try {
@@ -126,7 +151,7 @@ class MainActivity : ComponentActivity() {
         }
 
     private fun setViews(){
-        tvTitulo = findViewById(R.id.tv_titulo)
+//        tvTitulo = findViewById(R.id.tv_titulo)
 
 //        tibiaDataViewModel.getCharPorNome("Royal Pojap")
         //mainViewModel.getAccount(LoginActivity.auth.currentUser.toString())
