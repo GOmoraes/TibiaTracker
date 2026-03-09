@@ -1,13 +1,17 @@
 package com.example.tibiatracker.activity.fragment
 
-import android.media.Image
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tibiatracker.R
+import com.example.tibiatracker.activity.activity.main.CharacterAdapter
+import com.example.tibiatracker.activity.activity.main.MainActivity
+import com.example.tibiatracker.activity.model.AccountResponse
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,11 +28,22 @@ class CharFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var rvListaChar : RecyclerView
+
+    private var account : AccountResponse? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 //        val ivTeste = view.findViewById<ImageView>(R.id.iv_teste)
+        account = (activity as MainActivity).getAccount()
 
+        if (!account!!.contaChar.isNullOrEmpty()) {
+            val adapter = CharacterAdapter(account!!.contaChar)
+            rvListaChar = view.findViewById(R.id.rv_char_list)
+            rvListaChar.layoutManager = LinearLayoutManager(requireContext())
+            rvListaChar.adapter = adapter
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +52,6 @@ class CharFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
     }
 
     override fun onCreateView(
@@ -46,7 +60,6 @@ class CharFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_char, container, false)
-
     }
 
     companion object {

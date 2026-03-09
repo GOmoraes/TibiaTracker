@@ -13,6 +13,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tibiatracker.R
 import com.example.tibiatracker.activity.activity.login.LoginActivity
+import com.example.tibiatracker.activity.fragment.CharFragment
+import com.example.tibiatracker.activity.fragment.HomeFragment
+import com.example.tibiatracker.activity.fragment.PerfilFragment
 import com.example.tibiatracker.activity.model.AccountResponse
 import com.example.tibiatracker.activity.repository.MainRepositoryImpl
 import com.example.tibiatracker.activity.repository.TibiaDataRepositoryImpl
@@ -58,9 +61,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fragmentOpen(){
-        class HomeFragment : Fragment(R.layout.fragment_home)
-        class CharFragment : Fragment(R.layout.fragment_char)
-        class ProfileFragment : Fragment(R.layout.fragment_perfil)
+
         openFragment(HomeFragment())
 
         findViewById<View>(R.id.btn_home).setOnClickListener {
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<View>(R.id.btn_profile).setOnClickListener {
-            openFragment(ProfileFragment())
+            openFragment(PerfilFragment())
         }
     }
     fun openFragment(fragment: Fragment) {
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_container, fragment)
             .commit()
     }
-    private fun getAccount(){
+    fun getAccount() :AccountResponse? {
         try {
             val fis = this.openFileInput("account.tmp")
             val `is` = ObjectInputStream(fis)
@@ -90,9 +91,13 @@ class MainActivity : AppCompatActivity() {
             fis.close()
 
             account = simpleClass
+
+            return simpleClass
         }catch (e:Exception){
             Log.e(TAG, "getAccount: "+e.localizedMessage, )
+            return null
         }
+
     }
 
     private fun setViewModel(){
@@ -121,7 +126,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         mainViewModel.AccountResponse.observe(this, Observer { resultado ->
-            var account = resultado
+            account = resultado
 
 
             val fos = this.openFileOutput("account.tmp", Context.MODE_PRIVATE)
